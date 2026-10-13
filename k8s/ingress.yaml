@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ping-pong
+  namespace: ping-pong
+  labels:
+    app.kubernetes.io/name: ping-pong
+  annotations:
+    # Minikube: minikube addons enable ingress
+    # Kind: install ingress-nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: ping-pong.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ping-pong
+                port:
+                  name: http

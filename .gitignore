@@ -34,9 +34,6 @@ Thumbs.db
 # Log files
 *.log
 
-# Docker
-.dockerignore
-
 # Kubernetes secrets (if any)
 secrets/
 
